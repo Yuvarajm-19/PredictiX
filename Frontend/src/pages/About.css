@@ -1,0 +1,106 @@
+
+.about-section {
+  padding: 80px 0;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.team__content {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subtitle {
+  color: #2563eb;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.team__content h2 {
+  font-size: 3rem;
+  margin: 15px 0;
+  color: #1e293b;
+}
+
+.highlight {
+  color: #2563eb;
+}
+
+.description {
+  max-width: 850px;
+  margin: 0 auto;
+  color: #64748b;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.about-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid #2563eb;
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
+}
+
+.about-card h3 {
+  margin-bottom: 15px;
+  color: #1e293b;
+}
+
+.about-card p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.about-card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.about-card li {
+  margin-bottom: 10px;
+  color: #475569;
+}
+
+.developer-card {
+  text-align: center;
+}
+
+.developer-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .team__content h2 {
+    font-size: 2.2rem;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+}
+

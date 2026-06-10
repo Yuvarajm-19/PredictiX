@@ -5,10 +5,11 @@
   "description": "A web application that predicts if a patient has breast cancer, diabetes, heart disease and  lung cancer based on machine learning models.",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon -r dotenv/config --experimental-json-modules index.js",
-    "client": "npm run dev --prefix ../Frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
+  "start": "node index.js",
+  "server": "nodemon -r dotenv/config --experimental-json-modules index.js",
+  "client": "npm run dev --prefix ../Frontend",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+},
   "author": "Rhitam Chaudhury",
   "license": "ISC",
   "dependencies": {

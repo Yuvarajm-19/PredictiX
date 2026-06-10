@@ -4,8 +4,7 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { FiUpload, FiFileText } from "react-icons/fi";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
-import dotenv from "dotenv";
+import { API_URL } from "../utils/api";
 
 const DiabetesPage = () => {
   const [formData, setFormData] = useState({
@@ -44,14 +43,11 @@ const DiabetesPage = () => {
       formData.append("pdfFile", file);
 
       try {
-        const response = await fetch(
-          "http://localhost:8080/api/pdf/diabetes-scraper",
-          {
-            method: "POST",
-            body: formData,
-            credentials: "include",
-          }
-        );
+        const response = await fetch(`${API_URL}/api/pdf/diabetes-scraper`, {
+          method: "POST",
+          body: formData,
+          credentials: "include",
+        });
 
         if (!response.ok) {
           throw new Error("PDF upload request failed.");
@@ -85,17 +81,14 @@ const DiabetesPage = () => {
     setLoading(true); // Start loading spinner
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/predict/diabetes-pred",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${API_URL}/api/v1/predict/diabetes-pred`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+        credentials: "include",
+      });
       if (!response.ok) {
         throw new Error("Prediction request failed.");
       }

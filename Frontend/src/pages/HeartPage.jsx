@@ -47,14 +47,11 @@ const HeartPage = () => {
       formData.append("pdfFile", file);
 
       try {
-        const response = await fetch(
-          "http://localhost:8080/api/pdf/heart-scraper",
-          {
-            method: "POST",
-            body: formData,
-            credentials: "include",
-          }
-        );
+const response = await fetch(`${API_URL}/api/pdf/heart-scraper`, {
+        method: "POST",
+        body: formData,
+        credentials: "include",
+      });
 
         if (!response.ok) {
           throw new Error("PDF upload request failed.");
@@ -95,14 +92,12 @@ const HeartPage = () => {
     e.preventDefault();
     setLoading(true); // Start loading spinner
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/predict/heart-pred",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+      const response = await fetch(`${API_URL}/api/v1/predict/heart-pred`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
             p1: formData.age,
             p2: formData.sex,
             p3: formData.chestPainType,

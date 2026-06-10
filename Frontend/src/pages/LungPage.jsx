@@ -55,14 +55,11 @@ const LungPage = () => {
     formDataToSend.append("gender", formData.gender);
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/predict/lung-pred",
-        {
-          method: "POST",
-          body: formDataToSend,
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${API_URL}/api/v1/predict/lung-pred`, {
+        method: "POST",
+        body: formDataToSend,
+        credentials: "include",
+      });
 
       if (!response.ok) {
         throw new Error("Prediction request failed.");

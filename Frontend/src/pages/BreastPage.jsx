@@ -4,8 +4,7 @@ import { FiUpload, FiFileText } from "react-icons/fi";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import Loader from "react-loader-spinner"; // Import the loader component
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"; // Import the loader styles
-
-import dotenv from "dotenv";
+import { API_URL } from "../utils/api";
 
 const BreastPage = () => {
   const [formData, setFormData] = useState({
@@ -57,14 +56,11 @@ const BreastPage = () => {
     formDataToSend.append("gender", formData.gender);
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/predict/breast-pred",
-        {
-          method: "POST",
-          body: formDataToSend,
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${API_URL}/api/v1/predict/breast-pred`, {
+        method: "POST",
+        body: formDataToSend,
+        credentials: "include",
+      });
 
       if (!response.ok) {
         throw new Error("Prediction request failed.");

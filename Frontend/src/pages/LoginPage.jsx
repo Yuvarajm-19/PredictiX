@@ -5,7 +5,7 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate, Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import dotenv from "dotenv";
+import { API_URL } from "../utils/api";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -31,7 +31,7 @@ function LoginPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/v1/users/login", {
+      const response = await fetch(`${API_URL}/api/v1/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),

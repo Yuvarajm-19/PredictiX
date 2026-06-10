@@ -5,6 +5,7 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate, Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../utils/api";
 
 function SignupPage() {
   const [fullname, setFullname] = useState("");
@@ -53,15 +54,12 @@ function SignupPage() {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/users/register",
-        {
-          method: "POST",
-          body: JSON.stringify({ fullname, username, email, password }),
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${API_URL}/api/v1/users/register`, {
+        method: "POST",
+        body: JSON.stringify({ fullname, username, email, password }),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

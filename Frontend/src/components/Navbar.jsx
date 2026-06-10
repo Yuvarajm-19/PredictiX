@@ -6,6 +6,7 @@ import logo from "../assets/PredictiX_main_logo.png";
 import { UserContext } from "../context/UserContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../utils/api";
 
 function Navbar() {
   const { userInfo, setUserInfo } = useContext(UserContext);
@@ -29,12 +30,9 @@ function Navbar() {
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/users/profile",
-        {
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${API_URL}/api/v1/users/profile`, {
+        credentials: "include",
+      });
       if (response.ok) {
         const userData = await response.json();
         setUserInfo(userData);
@@ -49,13 +47,10 @@ function Navbar() {
 
   const logout = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/users/logout",
-        {
-          credentials: "include",
-          method: "POST",
-        }
-      );
+      const response = await fetch(`${API_URL}/api/v1/users/logout`, {
+        credentials: "include",
+        method: "POST",
+      });
       if (response.ok) {
         setUserInfo(null);
         toast.success("You have been logged out successfully!", {

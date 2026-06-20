@@ -3,6 +3,10 @@
 A production-grade full-stack healthcare platform that predicts **4 diseases** — heart disease, diabetes, breast cancer, and lung cancer — using machine learning models integrated directly into a MERN backend.
 
 ---
+##Live Link
+https://predicti-x.vercel.app/
+
+
 
 ## 🧠 What It Does
 
